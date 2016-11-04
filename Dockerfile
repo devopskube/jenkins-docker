@@ -1,7 +1,7 @@
 FROM jenkins:2.19.1-alpine
 
 COPY plugins.txt /usr/share/jenkins/plugins.txt
-RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+RUN /usr/local/bin/install-plugins.sh $(cat /usr/share/jenkins/plugins.txt | tr '\n' ' ')
 
 #Copy plugins
 COPY plugins/*.hpi /usr/share/jenkins/ref/plugins/
